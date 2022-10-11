@@ -5,15 +5,15 @@ import MuiDialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { useResponsiveWindowWidth } from '../Reponsive/ResponsiveWindowMeasurer';
+import { useResponsiveWindowWidth } from './Reponsive/ResponsiveWindowMeasurer';
 import classNames from 'classnames';
-import PreferencesContext from '../../MainFrame/Preferences/PreferencesContext';
+import PreferencesContext from '../MainFrame/Preferences/PreferencesContext';
 import {
   shouldCloseOrCancel,
   shouldSubmit,
-} from '../KeyboardShortcuts/InteractionKeys';
-import { LineStackLayout } from '../Layout';
-import RaisedButton from '../RaisedButton';
+} from './KeyboardShortcuts/InteractionKeys';
+import { LineStackLayout } from './Layout';
+import RaisedButton from './RaisedButton';
 
 const styles = {
   defaultBody: {
