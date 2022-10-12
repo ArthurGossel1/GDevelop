@@ -298,7 +298,7 @@ export default function NewObjectDialog({
   return (
     <>
       <Dialog
-        title={<Trans>Add a new object</Trans>}
+        title={<Trans>New object</Trans>}
         secondaryActions={[<HelpButton helpPagePath="/objects" key="help" />]}
         actions={[
           <FlatButton

@@ -30,6 +30,7 @@ export function Tabs<TabName>({
       value={value}
       onChange={(e, newValue) => onChange(newValue)}
       scrollButtons={variant ? 'on' : 'off'}
+      style={{ marginBottom: 16, borderRadius: 10 }}
     >
       {children}
     </MUITabs>
@@ -51,6 +52,18 @@ type TabProps = {|
  */
 export class Tab extends React.Component<TabProps, {||}> {
   render() {
-    return <MUITab {...this.props} />;
+    console.log(this.props);
+    return (
+      <MUITab
+        {...this.props}
+        style={{
+          paddingTop: 8,
+          paddingBottom: 8,
+          ...(this.props.selected
+            ? { backgroundColor: 'white', color: '#000000 !important' }
+            : {}),
+        }}
+      />
+    );
   }
 }

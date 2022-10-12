@@ -107,14 +107,20 @@ const ProfileDialog = ({
       noMargin
       fullHeight
       noTitleMargin
-      title={
-        <Tabs value={currentTab} onChange={setCurrentTab}>
-          <Tab label={<Trans>My Profile</Trans>} value="profile" />
-          <Tab label={<Trans>Games Dashboard</Trans>} value="games-dashboard" />
-        </Tabs>
-      }
+      title={<Trans>My profile</Trans>}
       flexColumnBody
     >
+      <Line>
+        <Column expand>
+          <Tabs value={currentTab} onChange={setCurrentTab}>
+            <Tab label={<Trans>My Profile</Trans>} value="profile" />
+            <Tab
+              label={<Trans>Games Dashboard</Trans>}
+              value="games-dashboard"
+            />
+          </Tabs>
+        </Column>
+      </Line>
       {currentTab === 'profile' &&
         (authenticatedUser.authenticated && authenticatedUser.profile ? (
           <Line>

@@ -89,6 +89,7 @@ export function ExampleDialog({
 
   return (
     <Dialog
+      title={exampleShortHeader.name}
       actions={[
         <FlatButton
           key="close"
@@ -141,11 +142,11 @@ export function ExampleDialog({
           {hasIcon ? (
             <ExampleThumbnailOrIcon exampleShortHeader={exampleShortHeader} />
           ) : null}
-          <Column expand noMargin={!hasIcon}>
+          {/* <Column expand noMargin={!hasIcon}>
             <Text noMargin size="block-title">
               {exampleShortHeader.name}
             </Text>
-          </Column>
+          </Column> */}
         </Line>
         {exampleShortHeader.authors && (
           <Line>

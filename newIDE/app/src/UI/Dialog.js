@@ -4,7 +4,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import MuiDialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
 import { useResponsiveWindowWidth } from './Reponsive/ResponsiveWindowMeasurer';
 import classNames from 'classnames';
 import PreferencesContext from '../MainFrame/Preferences/PreferencesContext';
@@ -14,13 +13,17 @@ import {
 } from './KeyboardShortcuts/InteractionKeys';
 import { LineStackLayout } from './Layout';
 import RaisedButton from './RaisedButton';
+import Text from './Text';
 
 const styles = {
   defaultBody: {
     overflowX: 'hidden',
+    paddingLeft: 40, // fix
+    paddingRight: 40, // fix
   },
   noMarginBody: {
-    padding: 0,
+    paddingLeft: 40, // fix
+    paddingRight: 40, // fix
     overflowX: 'hidden',
   },
   flexColumnBody: {
@@ -30,12 +33,23 @@ const styles = {
   flexBody: {
     display: 'flex',
   },
+  actionsContainer: {
+    paddingLeft: 40,
+    paddingRight: 40,
+    paddingBottom: 32,
+    paddingTop: 40,
+  },
   actionsContainerWithSecondaryActions: {
     display: 'flex',
     justifyContent: 'space-between',
   },
   noTitleMargin: {
     padding: 0,
+  },
+  title: {
+    paddingTop: 20,
+    paddingBottom: 20,
+    textAlign: 'center',
   },
   fullHeightModal: {
     minHeight: 'calc(100% - 64px)',
@@ -60,7 +74,7 @@ const useDangerousStyles = makeStyles(theme => ({
 // They should be self descriptive - refer to Material UI docs otherwise.
 type Props = {|
   open?: boolean,
-  title?: React.Node,
+  title: React.Node,
   actions?: Array<?React.Node>,
   secondaryActions?: Array<?React.Node>,
   isDangerous?: boolean,
@@ -226,17 +240,24 @@ const Dialog = ({
       onKeyDown={handleKeyDown}
     >
       {title && (
-        <DialogTitle style={noTitleMargin ? styles.noTitleMargin : undefined}>
+        <Text
+          size="section-title"
+          style={{
+            ...styles.title,
+            // padding: noTitleMargin ? 0 : undefined,
+          }}
+        >
           {title}
-        </DialogTitle>
+        </Text>
       )}
       <DialogContent style={dialogContentStyle}>{children}</DialogContent>
       <DialogActions
-        style={
-          secondaryActions
+        style={{
+          ...styles.actionsContainer,
+          ...(secondaryActions
             ? styles.actionsContainerWithSecondaryActions
-            : undefined
-        }
+            : {}),
+        }}
       >
         {dialogActions}
       </DialogActions>
